@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background: #000;
+    color: #00ff9c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.box {
+    border: 1px solid #00ff9c;
+    padding: 40px;
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    background: none;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    padding: 10px;
+}
+
+button {
+    background: #00ff9c;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>SynAura Login</h2>
+
+<input placeholder="Username">
+<input placeholder="Password" type="password">
+
+<button onclick="login()">Enter</button>
+</div>
+
+<script>
+function login() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
