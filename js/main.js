@@ -1,1 +1,6 @@
-<script defer src="js/main.js"></script>
+function scrollToSection() {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
+}
