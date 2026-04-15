@@ -1,21 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SynAura</title>
-  <style>
-    body {
-      background: #0b0f0c;
-      color: #00ff9c;
-      font-family: Arial;
-      text-align: center;
-      padding: 100px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SynAura</title>
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0a0f0c;
+    color: #eafff5;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #00ff9c;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav h1 {
+    color: #00ff9c;
+}
+
+nav a {
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #001a10, #000);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 70px;
+    letter-spacing: 4px;
+    color: #00ff9c;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00ff9c; }
+    to { text-shadow: 0 0 25px #00ff9c; }
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+.hero button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    background: #00ff9c;
+    color: black;
+}
+
+/* ===== SECTION ===== */
+.section {
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section h2 {
+    color: #00ff9c;
+    margin-bottom: 30px;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #00ff9c20;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #00ff9c;
+    transform: translateY(-5px);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.5;
+}
+
+/* ===== FLOATING PARTICLES ===== */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #00ff9c;
+    animation: float 10s infinite linear;
+}
+
+@keyframes float {
+    from { transform: translateY(0px); opacity: 1; }
+    to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-<h1>SynAura</h1>
-<p>Intelligence. Automation. Control.</p>
+<!-- NAV -->
+<nav>
+    <h1>SynAura</h1>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Docs</a>
+        <a href="#">GitHub</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>SynAura</h1>
+    <p>Intelligence. Automation. Control.</p>
+    <button onclick="scrollToSection()">Explore</button>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+    <h2>Core System</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>🧠 CORE</h3>
+            <p>Intelligence layer handling routing, execution, and AI integration.</p>
+        </div>
+        <div class="card">
+            <h3>🔗 NODE</h3>
+            <p>Modular system for tools, extensions, and expansion.</p>
+        </div>
+        <div class="card">
+            <h3>⚙️ SCALE</h3>
+            <p>Automation layer powering workflows and intelligent execution.</p>
+        </div>
+    </div>
+</section>
+
+<!-- AI SECTION -->
+<section class="section">
+    <h2>AI System</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Local First</h3>
+            <p>Powered by Ollama for fully local LLM execution.</p>
+        </div>
+        <div class="card">
+            <h3>Interchangeable Models</h3>
+            <p>Switch models dynamically depending on task.</p>
+        </div>
+        <div class="card">
+            <h3>Action-Based AI</h3>
+            <p>Not just chat — AI that interacts with your system.</p>
+        </div>
+    </div>
+</section>
+
+<!-- VISION -->
+<section class="section">
+    <h2>Vision</h2>
+    <p>
+        SynAura is being built as a unified computing environment where tools,
+        automation, and AI operate together seamlessly.
+    </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    Built by CRTX (Cortex)
+</footer>
+
+<!-- SCRIPT -->
+<script>
+function scrollToSection() {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
+}
+
+/* PARTICLES */
+for (let i = 0; i < 60; i++) {
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.top = Math.random() * 100 + "vh";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    document.body.appendChild(p);
+}
+</script>
 
 </body>
 </html>
