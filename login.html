@@ -48,7 +48,6 @@ button:hover {
 </style>
 
 <script defer src="js/main.js"></script>
-<script defer src="js/neural.js"></script>
 </head>
 
 <body>
@@ -64,7 +63,15 @@ button:hover {
 
 <script>
 function login() {
-    window.location.href = "index.html";
+    const user = document.querySelectorAll("input")[0].value;
+    const pass = document.querySelectorAll("input")[1].value;
+
+    if (user && pass) {
+        localStorage.setItem("synaura_auth", "true");
+        window.location.href = "index.html";
+    } else {
+        alert("Enter credentials.");
+    }
 }
 </script>
 

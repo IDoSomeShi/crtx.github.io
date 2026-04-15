@@ -2,45 +2,234 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>SynAura</title>
 
 <link rel="stylesheet" href="css/style.css">
-
-<style>
-body {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-</style>
-
 <script defer src="js/main.js"></script>
-<script defer src="js/neural.js"></script>
 </head>
 
 <body>
 
+<!-- BOOT -->
+<div id="boot"><div id="bootText"></div></div>
+
+<!-- NAV -->
 <nav>
-<h1>SynAura</h1>
-<div>
-<a href="index.html">Home</a>
-<a href="system.html">System</a>
-<a href="ai.html">AI</a>
-<a href="docs.html">Docs</a>
-<a href="terminal.html">Terminal</a>
-</div>
+    <div class="nav-left">
+        <div class="logo">SynAura</div>
+    </div>
+
+    <div class="nav-right">
+        <a href="#about" class="nav-link active">About</a>
+        <a href="#interfaces" class="nav-link">Interfaces</a>
+        <a href="#architecture" class="nav-link">System</a>
+        <a href="#ai" class="nav-link">AI</a>
+        <a href="#roadmap" class="nav-link">Roadmap</a>
+        <a href="terminal.html" class="nav-link launch">Launch</a>
+    </div>
 </nav>
 
-<section class="section" style="text-align:center;">
-<h1 style="font-size:60px;">SynAura</h1>
-<p>Intelligence. Automation. Control.</p>
-<button onclick="scrollToSection()">Explore</button>
+<!-- HERO -->
+<section class="hero">
+<canvas id="bannerCanvas"></canvas>
+
+<div class="hero-content">
+    <h1 class="glow">SynAura</h1>
+    <p class="tagline">Intelligence. Automation. Control.</p>
+    <p class="sub">A Unified Intelligence Environment · Built by CRTX</p>
+
+    <div class="buttons">
+        <button onclick="scrollToSection()">Explore</button>
+        <button onclick="window.location.href='terminal.html'">Launch</button>
+    </div>
+</div>
 </section>
 
 <section class="section">
 <h2>Overview</h2>
-<p>
-A unified intelligence environment built to centralize tools, automation, and AI.
-</p>
+
+<div class="grid">
+<div class="card">
+<h3>Unified System</h3>
+<p>All tools, workflows, and systems connected into one interface.</p>
+</div>
+
+<div class="card">
+<h3>Local First</h3>
+<p>No reliance on external APIs. Full control of your environment.</p>
+</div>
+
+<div class="card">
+<h3>Adaptive AI</h3>
+<p>AI that learns, executes, and integrates into your workflow.</p>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+<h2>About</h2>
+
+<div class="grid">
+<div class="card">
+<h3>From Curiosity → Control</h3>
+<p>Built from learning systems on low-end hardware into a unified intelligence environment.</p>
+</div>
+
+<div class="card">
+<h3>Built by One Developer</h3>
+<p>Driven by curiosity, built solo, refined with AI assistance.</p>
+</div>
+
+<div class="card">
+<h3>More Than a Tool</h3>
+<p>A learning platform, system hub, and advanced computing interface.</p>
+</div>
+</div>
+</section>
+
+<!-- INTERFACES -->
+<section class="section" id="interfaces">
+<h2>Work Interfaces</h2>
+
+<div class="grid">
+<div class="card">
+<h3>💬 AI Interface</h3>
+<p>Chat, execute, and control your system through AI-driven interaction.</p>
+</div>
+
+<div class="card">
+<h3>💻 Terminal Interface</h3>
+<p>Command-level access with enhanced automation and system control.</p>
+</div>
+
+<div class="card">
+<h3>🧩 Modular Panels</h3>
+<p>Custom UI panels for tools, workflows, and extensions.</p>
+</div>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>🌐 Internal Browser</h3>
+<p>Custom browsing with system-level integration and file handling.</p>
+</div>
+
+<div class="card">
+<h3>📦 Marketplace</h3>
+<p>Install and manage nodes, tools, and extensions.</p>
+</div>
+
+<div class="card">
+<h3>⚙️ System Dashboard</h3>
+<p>Monitor, control, and automate your environment in real time.</p>
+</div>
+</div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="section" id="architecture">
+<h2>Architecture</h2>
+
+<div class="grid">
+<div class="card">
+<h3>🧠 CORE</h3>
+<p>Command routing, execution logic, AI coordination.</p>
+</div>
+
+<div class="card">
+<h3>🔗 NODE</h3>
+<p>Modular, expandable system of tools and features.</p>
+</div>
+
+<div class="card">
+<h3>⚙️ SCALE</h3>
+<p>Automation, workflows, and intelligent execution.</p>
+</div>
+</div>
+</section>
+
+<!-- AI -->
+<section class="section" id="ai">
+<h2>AI System</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Local First</h3>
+<p>Powered by Ollama — fully local AI execution.</p>
+</div>
+
+<div class="card">
+<h3>Model Switching</h3>
+<p>Swap models dynamically based on task.</p>
+</div>
+
+<div class="card">
+<h3>Action-Based AI</h3>
+<p>AI executes actions, not just responses.</p>
+</div>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section" id="roadmap">
+<h2>Roadmap</h2>
+
+<div class="timeline">
+
+<div class="step">
+<span>Aura</span>
+<p>Core system foundation, UI base, AI integration.</p>
+</div>
+
+<div class="step">
+<span>Pulse</span>
+<p>Expanded node system, workflow automation.</p>
+</div>
+
+<div class="step">
+<span>Halo</span>
+<p>Advanced UI interfaces, plugin marketplace.</p>
+</div>
+
+<div class="step">
+<span>Nova</span>
+<p>Deep AI integration, system intelligence layer.</p>
+</div>
+
+<div class="step">
+<span>Phantom</span>
+<p>Full automation pipelines and adaptive workflows.</p>
+</div>
+
+<div class="step">
+<span>Eclipse</span>
+<p>Complete ecosystem and unified system control.</p>
+</div>
+
+</div>
+</section>
+
+<!-- VISION -->
+<section class="section">
+<h2>Vision</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Unified System</h3>
+<p>Everything controlled from one environment.</p>
+</div>
+
+<div class="card">
+<h3>Adaptive Intelligence</h3>
+<p>The system evolves based on usage.</p>
+</div>
+
+<div class="card">
+<h3>Human + Machine</h3>
+<p>Reducing friction between thought and execution.</p>
+</div>
+</div>
 </section>
 
 </body>
