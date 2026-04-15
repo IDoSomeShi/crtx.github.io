@@ -1,20 +1,18 @@
-// smooth scroll
-function scrollToSection() {
-    window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth"
-    });
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0a0f0c;
+    color: #eafff5;
 }
 
-// particles
-for (let i = 0; i < 50; i++) {
-    let p = document.createElement("div");
-    p.style.position = "absolute";
-    p.style.width = "2px";
-    p.style.height = "2px";
-    p.style.background = "#00ff9c";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.top = Math.random() * 100 + "vh";
-    p.style.opacity = Math.random();
-    document.body.appendChild(p);
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(0,0,0,0.7);
+}
+
+nav a {
+    color: #00ff9c;
+    margin-left: 20px;
 }

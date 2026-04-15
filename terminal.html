@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script defer src="js/neural.js"></script>
-<script defer src="js/main.js"></script>
+<meta charset="UTF-8">
+
 <link rel="stylesheet" href="css/style.css">
+
 <style>
+body {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
 .terminal {
     background: black;
     color: #00ff9c;
@@ -13,6 +20,7 @@
     height: 80vh;
     overflow-y: auto;
 }
+
 input {
     background: none;
     border: none;
@@ -20,9 +28,23 @@ input {
     outline: none;
 }
 </style>
+
+<script defer src="js/main.js"></script>
+<script defer src="js/neural.js"></script>
 </head>
 
 <body>
+
+<nav>
+<h1>SynAura</h1>
+<div>
+<a href="index.html">Home</a>
+<a href="system.html">System</a>
+<a href="ai.html">AI</a>
+<a href="docs.html">Docs</a>
+<a href="terminal.html">Terminal</a>
+</div>
+</nav>
 
 <div class="terminal" id="terminal">
     <div>> SynAura Terminal</div>

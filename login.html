@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="css/style.css">
+
 <style>
 body {
-    background: #000;
-    color: #00ff9c;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: sans-serif;
 }
 
 .box {
     border: 1px solid #00ff9c;
     padding: 40px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
 }
 
 input {
@@ -24,6 +31,7 @@ input {
     border: 1px solid #00ff9c;
     color: #00ff9c;
     padding: 10px;
+    width: 200px;
 }
 
 button {
@@ -31,8 +39,16 @@ button {
     border: none;
     padding: 10px;
     cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
 }
 </style>
+
+<script defer src="js/main.js"></script>
+<script defer src="js/neural.js"></script>
 </head>
 
 <body>
