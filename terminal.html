@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.terminal {
+    background: black;
+    color: #00ff9c;
+    padding: 20px;
+    font-family: monospace;
+    height: 80vh;
+    overflow-y: auto;
+}
+input {
+    background: none;
+    border: none;
+    color: #00ff9c;
+    outline: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="terminal" id="terminal">
+    <div>> SynAura Terminal</div>
+</div>
+
+<input id="input" autofocus />
+
+<script>
+const term = document.getElementById("terminal");
+const input = document.getElementById("input");
+
+input.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
+        let cmd = input.value;
+        term.innerHTML += `<div>> ${cmd}</div>`;
+
+        if (cmd === "help") {
+            term.innerHTML += `<div>Available: help, clear</div>`;
+        }
+
+        if (cmd === "clear") {
+            term.innerHTML = "";
+        }
+
+        input.value = "";
+    }
+});
+</script>
+
+</body>
+</html>
