@@ -1,1 +1,20 @@
-<link rel="stylesheet" href="css/style.css">
+// smooth scroll
+function scrollToSection() {
+    window.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth"
+    });
+}
+
+// particles
+for (let i = 0; i < 50; i++) {
+    let p = document.createElement("div");
+    p.style.position = "absolute";
+    p.style.width = "2px";
+    p.style.height = "2px";
+    p.style.background = "#00ff9c";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.top = Math.random() * 100 + "vh";
+    p.style.opacity = Math.random();
+    document.body.appendChild(p);
+}
