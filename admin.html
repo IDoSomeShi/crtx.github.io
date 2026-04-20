@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SynAura Control</title>
+
+<link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
+</head>
+
+<body onload="initAdminPage()">
+
+<div class="admin-shell">
+
+  <!-- SIDEBAR -->
+  <div class="admin-nav">
+    <h2>CONTROL</h2>
+
+    <button onclick="adminView('overview')">Overview</button>
+    <button onclick="adminView('modules')">Modules</button>
+    <button onclick="adminView('users')">Users</button>
+    <button onclick="adminView('data')">Data</button>
+    <button onclick="adminView('commands')">Commands</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="admin-view" id="adminView"></div>
+
+</div>
+
+</body>
+</html>

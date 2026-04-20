@@ -1,0 +1,41 @@
+<body onload="requireAuth()"></body>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
+<title>Profile</title>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">SynAura</div>
+<div class="nav-right"></div>
+</nav>
+
+<section class="section">
+<h2>Your Profile</h2>
+
+<div class="card">
+<p><strong>Username:</strong> <span id="username"></span></p>
+<p>Status: Active User</p>
+</div>
+
+</section>
+
+<script>
+if (!localStorage.getItem("synaura_auth")) {
+    window.location.href = "login.html";
+}
+
+document.getElementById("username").innerText =
+    localStorage.getItem("synaura_user");
+</script>
+
+<button onclick="logout()">Logout</button>
+
+</body>
+</html>

@@ -2,78 +2,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Login</title>
 
 <link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
 
 <style>
 body {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
 }
-
-.box {
-    border: 1px solid #00ff9c;
-    padding: 40px;
-    background: rgba(0,0,0,0.7);
+.auth-box {
+    width: 320px;
+    padding: 30px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(0,255,156,0.2);
+    border-radius: 14px;
     backdrop-filter: blur(10px);
+    text-align: center;
 }
-
 input {
-    display: block;
+    width: 100%;
     margin: 10px 0;
-    background: none;
+    padding: 10px;
+    background: transparent;
     border: 1px solid #00ff9c;
     color: #00ff9c;
-    padding: 10px;
-    width: 200px;
-}
-
-button {
-    background: #00ff9c;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.8;
 }
 </style>
-
-<script defer src="js/main.js"></script>
 </head>
 
 <body>
 
-<div class="box">
-<h2>SynAura Login</h2>
+<div class="auth-box">
+<h2>SynAura Access</h2>
+<p style="opacity:0.6; font-size:13px;">Enter or create your identity</p>
 
-<input placeholder="Username">
-<input placeholder="Password" type="password">
+<input id="user">
+<input id="pass">
 
-<button onclick="login()">Enter</button>
+<button onclick="loginUser(
+document.getElementById('user').value,
+document.getElementById('pass').value
+)">Login</button>
+
+<button onclick="registerUser(
+document.getElementById('user').value,
+document.getElementById('pass').value
+)">Register</button>
 </div>
-
-<script>
-function login() {
-    const user = document.querySelectorAll("input")[0].value;
-    const pass = document.querySelectorAll("input")[1].value;
-
-    if (user && pass) {
-        localStorage.setItem("synaura_auth", "true");
-        window.location.href = "index.html";
-    } else {
-        alert("Enter credentials.");
-    }
-}
-</script>
 
 </body>
 </html>

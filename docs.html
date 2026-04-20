@@ -2,8 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Docs</title>
 
 <link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
 
 <style>
 body {
@@ -13,40 +15,55 @@ body {
 }
 </style>
 
-<script defer src="js/main.js"></script>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-<h1>SynAura</h1>
-<div>
-<a href="index.html">Home</a>
-<a href="system.html">System</a>
-<a href="ai.html">AI</a>
-<a href="docs.html">Docs</a>
-<a href="terminal.html">Terminal</a>
+<div class="logo" onclick="goHome()">SynAura</div>
+
+<div class="nav-right">
+<a href="index.html" class="nav-link">Home</a>
+<a href="system.html" class="nav-link">System</a>
+<a href="ai.html" class="nav-link">AI</a>
+<a href="docs.html" class="nav-link active">Docs</a>
+<a href="marketplace.html" class="nav-link">Market</a>
 </div>
 </nav>
 
-<section class="section">
-<h2>Documentation</h2>
+<!-- DOCS -->
+ <section class="section">
+<input id="docSearch" placeholder="Search docs..." class="doc-search">
+</section>
+<section class="section docs-layout">
 
-<div class="grid">
-<div class="card">
-<h3>Getting Started</h3>
-<p>Setup and installation instructions.</p>
+<!-- SIDEBAR -->
+<div class="docs-sidebar">
+
+<div class="doc-link active" onclick="openDoc('getting-started', this)">
+Getting Started
 </div>
 
-<div class="card">
-<h3>Node System</h3>
-<p>How to build extensions.</p>
+<div class="doc-link" onclick="openDoc('node-system', this)">
+Node System
 </div>
 
-<div class="card">
-<h3>API</h3>
-<p>Future system integration docs.</p>
+<div class="doc-link" onclick="openDoc('api', this)">
+API
 </div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="docs-content">
+
+<h2 id="docTitle">Getting Started</h2>
+
+<div class="card" id="docBody">
+<p>Select a section from the left to view documentation.</p>
+</div>
+
 </div>
 
 </section>

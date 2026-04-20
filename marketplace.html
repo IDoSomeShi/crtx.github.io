@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 
 <link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/main.js"></script>
 
 <style>
 body {
@@ -13,49 +14,218 @@ body {
 }
 </style>
 
-<script defer src="js/main.js"></script>
 </head>
 
 <body>
 
 <nav>
-<h1>SynAura</h1>
-<div>
-<a href="index.html">Home</a>
-<a href="system.html">System</a>
-<a href="ai.html">AI</a>
-<a href="docs.html">Docs</a>
-<a href="terminal.html">Terminal</a>
-<a href="marketplace.html">Market</a>
+<div class="logo">SynAura</div>
+
+<div class="nav-right">
+<a href="index.html" class="nav-link">Home</a>
+<a href="system.html" class="nav-link">System</a>
+<a href="ai.html" class="nav-link">AI</a>
+<a href="docs.html" class="nav-link">Docs</a>
+<a href="marketplace.html" class="nav-link active">Market</a>
+<a href="profile.html" class="nav-link">Profile</a>
 </div>
 </nav>
 
 <section class="section">
+
 <h2>Marketplace</h2>
 
-<div class="grid">
+<p style="opacity:0.7; max-width:700px;">
+The SynAura Marketplace allows you to expand your system through modular nodes.
+Install tools, extend functionality, and customize your environment.
+</p>
 
-<div class="card">
-<h3>AI Assistant</h3>
-<p>Advanced node for AI control.</p>
-<button>Install</button>
-</div>
-
-<div class="card">
-<h3>System Monitor</h3>
-<p>Track CPU, RAM, and processes.</p>
-<button>Install</button>
-</div>
-
-<div class="card">
-<h3>File Manager+</h3>
-<p>Enhanced file navigation.</p>
-<button>Install</button>
-</div>
-
-</div>
+<div class="grid" id="store"></div>
 
 </section>
+
+<section class="section alt">
+
+<h2>Installed Nodes</h2>
+<div class="grid" id="installed"></div>
+
+</section>
+
+<section class="section">
+
+<h2>Upload Node</h2>
+
+<div class="card">
+
+<input id="uploadName" placeholder="Node Name">
+<button onclick="handleUpload()">Upload</button>
+
+</div>
+
+<div class="grid" id="customNodes"></div>
+
+</section>
+
+
+<script>
+
+// =========================
+// SOUND INIT
+// =========================
+window.addEventListener("click", () => {
+    const ambient = document.getElementById("ambientSound");
+    if (ambient && ambient.paused) {
+        ambient.volume = 0.2;
+        ambient.play().catch(()=>{});
+    }
+}, { once:true });
+
+function playHover() {
+    const s = document.getElementById("hoverSound");
+    if (s) {
+        s.currentTime = 0;
+        s.volume = 0.3;
+        s.play().catch(()=>{});
+    }
+}
+
+function playInstall() {
+    const s = document.getElementById("installSound");
+    if (s) {
+        s.currentTime = 0;
+        s.volume = 0.4;
+        s.play().catch(()=>{});
+    }
+}
+
+// =========================
+// STORE DATA
+// =========================
+const storeItems = [
+  {
+    name: "AI Assistant",
+    version: "1.0",
+    desc: "Basic AI interaction module"
+  },
+  {
+    name: "System Monitor",
+    version: "1.2",
+    desc: "Track system performance"
+  }
+];
+
+// =========================
+// LOAD STORE
+// =========================
+function loadStore() {
+  const container = document.getElementById("store");
+
+  container.innerHTML = storeItems.map(item => `
+    <div class="card">
+      <h3>${item.name}</h3>
+      <p>${item.desc}</p>
+      <small>v${item.version}</small>
+      <button onclick="install('${item.name}')">Install</button>
+    </div>
+  `).join("");
+}
+
+// =========================
+// INSTALL
+// =========================
+function install(name) {
+  let installed = JSON.parse(localStorage.getItem("installed") || "[]");
+
+  if (!installed.find(m => m.name === name)) {
+    installed.push({ name, enabled: true });
+    localStorage.setItem("installed", JSON.stringify(installed));
+  }
+
+  loadInstalled();
+}
+
+// =========================
+// UNINSTALL
+// =========================
+function uninstall(name) {
+    let installed = JSON.parse(localStorage.getItem("installed") || "[]");
+
+    installed = installed.filter(i => i !== name);
+    localStorage.setItem("installed", JSON.stringify(installed));
+
+    loadInstalled();
+}
+
+// =========================
+// LOAD INSTALLED
+// =========================
+function loadInstalled() {
+    const container = document.getElementById("installed");
+
+    let installed = JSON.parse(localStorage.getItem("installed") || "[]");
+
+    container.innerHTML = installed.map(name => `
+        <div class="card" onmouseenter="playHover()">
+            <h3>${name}</h3>
+            <button onclick="uninstall('${name}')">Remove</button>
+        </div>
+    `).join("");
+}
+
+// =========================
+// UPLOAD NODE
+// =========================
+function uploadNode() {
+  const name = document.getElementById("uploadName").value;
+  if (!name) return;
+
+  const node = {
+    name,
+    created: Date.now()
+  };
+
+  let custom = JSON.parse(localStorage.getItem("customNodes") || "[]");
+  custom.push(node);
+
+  localStorage.setItem("customNodes", JSON.stringify(custom));
+
+  loadCustom();
+}
+
+// =========================
+// LOAD CUSTOM
+// =========================
+function loadCustom() {
+  const container = document.getElementById("customNodes");
+
+  let custom = JSON.parse(localStorage.getItem("customNodes") || "[]");
+
+  container.innerHTML = custom.map(n => `
+    <div class="card">
+      <h3>${n.name}</h3>
+      <small>${new Date(n.created).toLocaleString()}</small>
+      <button onclick="install('${n.name}')">Install</button>
+    </div>
+  `).join("");
+}
+
+function handleUpload() {
+  if (!window.isAdmin()) {
+    alert("Admin only");
+    return;
+  }
+
+  uploadNode();
+}
+
+// =========================
+// INIT
+// =========================
+loadStore();
+loadInstalled();
+loadCustom();
+
+</script>
 
 </body>
 </html>

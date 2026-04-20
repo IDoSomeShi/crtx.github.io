@@ -260,3 +260,788 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =========================
+   NAV FIX (ADD THIS ONLY)
+========================= */
+
+nav {
+    box-sizing: border-box;
+}
+
+/* contain right side */
+.nav-right {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;              /* FIXES overflow */
+    justify-content: flex-end;
+    max-width: 65%;               /* PREVENTS PUSHING OFF SCREEN */
+}
+
+/* prevent link stretching */
+.nav-link {
+    white-space: nowrap;
+}
+
+/* =========================
+   DEPTH SECTIONS
+========================= */
+
+.section.alt {
+    background: rgba(0, 255, 156, 0.03);
+    border-top: 1px solid rgba(0,255,156,0.05);
+    border-bottom: 1px solid rgba(0,255,156,0.05);
+}
+
+/* =========================
+   POLISH V3 ADDITIONS
+========================= */
+
+/* smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* scroll progress bar */
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: #00ff9c;
+    width: 0%;
+    z-index: 999;
+    box-shadow: 0 0 10px #00ff9c;
+}
+
+/* cursor glow */
+.cursor-glow {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,156,0.15), transparent 70%);
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* button glow */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,255,156,0.2), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+
+/* card scan */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,255,156,0.1),
+        transparent
+    );
+    opacity: 0;
+}
+
+.card:hover::after {
+    opacity: 1;
+    transition: 0.4s;
+}
+
+.nav-link.launch {
+    border: 1px solid #00ff9c;
+    padding: 6px 14px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,255,156,0.2);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.6));
+    z-index: 1;
+}
+
+.section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    line-height: 1.6;
+}
+
+/* =========================
+   PREMIUM HERO
+========================= */
+
+.hero-title {
+    letter-spacing: 2px;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 20px #00ff9c; }
+    50% { text-shadow: 0 0 40px #00ff9c; }
+    100% { text-shadow: 0 0 20px #00ff9c; }
+}
+
+.hero-buttons {
+    margin-top: 20px;
+}
+
+/* depth overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.5));
+    pointer-events: none;
+}
+
+.hero-content {
+    transition: transform 0.2s ease;
+}
+
+.tagline {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.sub {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.hero-content::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle, rgba(0,255,156,0.1), transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+}
+
+/* =========================
+   PREMIUM SCROLL ANIMATION
+========================= */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.8s ease;
+}
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+}
+
+.card.clickable {
+    cursor: pointer;
+}
+
+.card.clickable:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+.logo {
+    cursor: pointer;
+}
+
+/* =========================
+   DOCS LAYOUT
+========================= */
+
+.docs-layout {
+    display: flex;
+    gap: 40px;
+}
+
+/* sidebar */
+.docs-sidebar {
+    width: 220px;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+/* links */
+.doc-link {
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    opacity: 0.7;
+    transition: 0.25s;
+}
+
+.doc-link:hover {
+    opacity: 1;
+}
+
+/* active */
+.doc-link.active {
+    border-color: #00ff9c;
+    opacity: 1;
+}
+
+/* content */
+.docs-content {
+    flex: 1;
+}
+
+/* SEARCH */
+.doc-search {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+}
+
+/* CODE BLOCK */
+pre {
+    position: relative;
+    background: black;
+    padding: 15px;
+    border: 1px solid rgba(0,255,156,0.2);
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 11px;
+    padding: 4px 8px;
+    border: 1px solid #00ff9c;
+    background: black;
+    color: #00ff9c;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.copy-btn:hover {
+    background: #00ff9c;
+    color: black;
+}
+
+/* SECTION SPACING */
+.doc-section h3 {
+    margin-top: 25px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   PREMIUM BOOT
+========================= */
+
+#boot {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #020403, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.boot-inner {
+    text-align: center;
+}
+
+.boot-logo {
+    color: #00ff9c;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #00ff9c;
+}
+
+.boot-text {
+    font-family: monospace;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+/* progress bar */
+.boot-bar {
+    width: 220px;
+    height: 4px;
+    background: rgba(0,255,156,0.1);
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#bootProgress {
+    width: 0%;
+    height: 100%;
+    background: #00ff9c;
+    box-shadow: 0 0 10px #00ff9c;
+    transition: width 0.3s;
+}
+
+.section.alt {
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,255,156,0.05);
+    border-bottom: 1px solid rgba(0,255,156,0.05);
+}
+
+.admin-layout {
+  display: flex;
+  height: 100%;
+}
+
+.admin-sidebar {
+  width: 220px;
+  border-right: 1px solid #00ff9c33;
+  display: flex;
+  flex-direction: column;
+  background: #0a0a0a;
+}
+
+.admin-sidebar button {
+  background: none;
+  border: none;
+  color: #00ff9c;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-sidebar button:hover {
+  background: #00ff9c22;
+}
+
+.admin-title {
+  padding: 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #00ff9c33;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* logs */
+.admin-logs {
+  height: 200px;
+  overflow-y: auto;
+  background: black;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #00ff9c33;
+}
+
+/* inputs */
+#adminPanel textarea {
+  width: 100%;
+  height: 80px;
+  background: black;
+  color: #00ff9c;
+  border: 1px solid #00ff9c;
+  margin-bottom: 5px;
+}
+
+#adminPanel {
+  backdrop-filter: blur(12px);
+  animation: fadeInAdmin 0.3s ease;
+}
+
+@keyframes fadeInAdmin {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.admin-shell {
+  display: flex;
+  height: 100vh;
+  background: #050505;
+  color: #00ff9c;
+  font-family: monospace;
+}
+
+.admin-nav {
+  width: 240px;
+  border-right: 1px solid #111;
+  padding: 20px;
+}
+
+.admin-nav button {
+  width: 100%;
+  margin-bottom: 10px;
+  background: none;
+  border: 1px solid #00ff9c33;
+  color: #00ff9c;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.admin-nav button:hover {
+  background: #00ff9c22;
+}
+
+.admin-view {
+  flex: 1;
+  padding: 30px;
+}
+
+.admin-module {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.admin-view h2 {
+  border-bottom: 1px solid #00ff9c33;
+  padding-bottom: 10px;
+}
+
+.admin-view textarea {
+  width: 100%;
+  height: 150px;
+  background: black;
+  color: #00ff9c;
+  border: 1px solid #00ff9c;
+}
+
+#roadmapPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#roadmapPopup.active {
+  display: flex;
+}
+
+.holo-box {
+  width: 500px;
+  padding: 25px;
+  background: rgba(0, 255, 156, 0.05);
+  border: 1px solid #00ff9c;
+  color: #00ff9c;
+  font-family: monospace;
+
+  backdrop-filter: blur(15px);
+  box-shadow:
+    0 0 20px #00ff9c,
+    0 0 60px rgba(0,255,156,0.3);
+
+  animation: holoAppear 0.3s ease;
+}
+
+.holo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.holo-box ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.holo-box li {
+  margin-bottom: 8px;
+}
+
+@keyframes holoAppear {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.holo-section {
+  margin-top: 12px;
+  padding: 8px;
+  border-left: 2px solid #00ff9c55;
+}
+
+.holo-section ul {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+.holo-section li {
+  margin-bottom: 6px;
+}
+
+/* subtle scanline effect */
+.holo-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0,255,156,0.05) 3px
+  );
+  pointer-events: none;
+}
+
+.holo-box {
+  animation: holoEnter 0.3s ease;
+}
+
+.holo-box.aura { animation: flicker 1s infinite alternate; }
+.holo-box.nova { animation: float 3s infinite ease-in-out; }
+.holo-box.phantom { opacity: 0.85; filter: blur(0.3px); }
+
+@keyframes flicker {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+#roadmapCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.step {
+  opacity: 0.3;
+  transform: translateY(20px);
+  transition: 0.4s;
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.holo-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+/* AURA — terminal flicker */
+.holo-box.aura {
+  animation: auraFlicker 1.5s infinite alternate;
+}
+
+@keyframes auraFlicker {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
+}
+
+/* PULSE — subtle breathing */
+.holo-box.pulse {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px currentColor; }
+  50% { box-shadow: 0 0 30px currentColor; }
+  100% { box-shadow: 0 0 10px currentColor; }
+}
+
+/* HALO — expanding feel */
+.holo-box.halo {
+  transform: scale(1.02);
+}
+
+/* NOVA — floating energy */
+.holo-box.nova {
+  animation: novaFloat 3s infinite ease-in-out;
+}
+
+@keyframes novaFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* PHANTOM — ghosty */
+.holo-box.phantom {
+  opacity: 0.85;
+  filter: blur(0.4px);
+}
+
+/* ECLIPSE — stable + glow */
+.holo-box.eclipse {
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+#roadmapScene {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  overflow: hidden;
+}
+
+#roadmapScene.active {
+  display: block;
+  animation: sceneFade 0.4s ease;
+}
+
+@keyframes sceneFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* canvas layer */
+#sceneCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* content layer */
+.scene-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 100px auto;
+  padding: 30px;
+
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+
+  box-shadow: 0 0 40px var(--main-color);
+}
+
+/* header */
+.scene-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* body */
+.scene-body ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+/* ---------- VERSION THEMES ---------- */
+
+/* AURA */
+#roadmapScene.aura {
+  background: radial-gradient(circle, #001a12, black);
+}
+
+/* NOVA */
+#roadmapScene.nova {
+  background: radial-gradient(circle, #001a2a, black);
+}
+
+/* PHANTOM */
+#roadmapScene.phantom {
+  background: black;
+}
+
+/* HALO */
+#roadmapScene.halo {
+  background: radial-gradient(circle, #1a1a00, black);
+}
+
+/* BASE SCENE */
+#roadmapScene {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  overflow: hidden;
+}
+
+#roadmapScene.active {
+  display: block;
+}
+
+/* ADD DEPTH LAYERS */
+#roadmapScene::before,
+#roadmapScene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* GLOW LAYER */
+#roadmapScene::before {
+  background: radial-gradient(circle at 50% 50%, var(--main-color) 0%, transparent 60%);
+  opacity: 0.15;
+  filter: blur(80px);
+}
+
+/* NOISE / DEPTH */
+#roadmapScene::after {
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.2;
+}

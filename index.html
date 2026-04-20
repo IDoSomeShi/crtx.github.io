@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta charset="UTF-8">
-<title>SynAura</title>
+<title>Synapse Core</title>
 
 <link rel="stylesheet" href="css/style.css">
-<script defer src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 </head>
 
 <body>
+<div id="progressBar"></div>
 
 <!-- BOOT -->
-<div id="boot"><div id="bootText"></div></div>
+<div id="boot">
+
+    <div class="boot-inner">
+
+        <h1 class="boot-logo">Synapse Core</h1>
+
+        <div id="bootText" class="boot-text"></div>
+
+        <div class="boot-bar">
+            <div id="bootProgress"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="adminPanel" class="admin-panel hidden">
+  <h3>Admin Panel</h3>
+
+  <button onclick="localStorage.clear()">Clear Storage</button>
+  <button onclick="logout()">Logout</button>
+
+  <input id="quickCmd" placeholder="quick command">
+<button onclick="runQuickCommand()">Run</button>
+
+<button onclick="location.reload()">Reload Site</button>
+<button onclick="localStorage.clear()">Wipe Data</button>
+</div>
 
 <!-- NAV -->
 <nav>
-    <div class="nav-left">
-        <div class="logo">SynAura</div>
-    </div>
+  <div class="logo" onclick="goHome()">Synapse Core</div>
 
-    <div class="nav-right">
-        <a href="#about" class="nav-link active">About</a>
-        <a href="#interfaces" class="nav-link">Interfaces</a>
-        <a href="#architecture" class="nav-link">System</a>
-        <a href="#ai" class="nav-link">AI</a>
-        <a href="#roadmap" class="nav-link">Roadmap</a>
-        <a href="terminal.html" class="nav-link launch">Launch</a>
-    </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="system.html" class="nav-link">System</a>
+    <a href="ai.html" class="nav-link">AI</a>
+    <a href="docs.html" class="nav-link">Docs</a>
+    <a href="marketplace.html" class="nav-link">Market</a>
+    <a href="profiles.html" class="nav-link">Profile</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -34,17 +62,58 @@
 <canvas id="bannerCanvas"></canvas>
 
 <div class="hero-content">
-    <h1 class="glow">SynAura</h1>
-    <p class="tagline">Intelligence. Automation. Control.</p>
-    <p class="sub">A Unified Intelligence Environment · Built by CRTX</p>
 
-    <div class="buttons">
+    <h1 class="glow hero-title">
+        <span id="typeText">Synapse Core</span>
+    </h1>
+
+    <p class="tagline">Intelligence. Automation. Control.</p>
+
+    <p class="sub">
+        A Unified Intelligence Environment · Built by CRTX
+    </p>
+
+    <div class="hero-buttons">
         <button onclick="scrollToSection()">Explore</button>
-        <button onclick="window.location.href='terminal.html'">Launch</button>
+        <button onclick="checkAuth('marketplace.html')">Enter System</button>
     </div>
+
 </div>
 </section>
 
+<!-- BREAK SECTION -->
+<section class="section alt" style="text-align:center;">
+    <h2>Not Just Another Tool</h2>
+    <p style="max-width:700px; margin:auto; opacity:0.7;">
+        Synapse Core connects everything you do into one intelligent system.
+        No switching. No fragmentation. Just control.
+    </p>
+</section>
+
+<section class="section" style="text-align:center;">
+<h2>Core Access</h2>
+
+<div class="grid">
+
+<div class="card" onclick="window.location.href='system.html'" style="cursor:pointer;">
+<h3>System</h3>
+<p>Access architecture and core components.</p>
+</div>
+
+<div class="card" onclick="window.location.href='ai.html'" style="cursor:pointer;">
+<h3>AI</h3>
+<p>Interact with intelligence systems.</p>
+</div>
+
+<div class="card" onclick="checkAuth('marketplace.html')" style="cursor:pointer;">
+<h3>Marketplace</h3>
+<p>Install and manage system extensions.</p>
+</div>
+
+</div>
+</section>
+
+<!-- OVERVIEW -->
 <section class="section">
 <h2>Overview</h2>
 
@@ -67,13 +136,13 @@
 </section>
 
 <!-- ABOUT -->
-<section class="section" id="about">
+<section class="section alt" id="about">
 <h2>About</h2>
 
 <div class="grid">
 <div class="card">
 <h3>From Curiosity → Control</h3>
-<p>Built from learning systems on low-end hardware into a unified intelligence environment.</p>
+<p>Built from learning systems into a unified intelligence environment.</p>
 </div>
 
 <div class="card">
@@ -83,7 +152,7 @@
 
 <div class="card">
 <h3>More Than a Tool</h3>
-<p>A learning platform, system hub, and advanced computing interface.</p>
+<p>A system designed to change how you interact with your computer.</p>
 </div>
 </div>
 </section>
@@ -95,56 +164,56 @@
 <div class="grid">
 <div class="card">
 <h3>💬 AI Interface</h3>
-<p>Chat, execute, and control your system through AI-driven interaction.</p>
+<p>Interact, execute, and control through intelligent systems.</p>
 </div>
 
 <div class="card">
-<h3>💻 Terminal Interface</h3>
-<p>Command-level access with enhanced automation and system control.</p>
+<h3>💻 Terminal</h3>
+<p>Command-level access enhanced with automation.</p>
 </div>
 
 <div class="card">
-<h3>🧩 Modular Panels</h3>
-<p>Custom UI panels for tools, workflows, and extensions.</p>
+<h3>🧩 Panels</h3>
+<p>Custom interfaces for tools, workflows, and modules.</p>
 </div>
 </div>
 
 <div class="grid">
 <div class="card">
-<h3>🌐 Internal Browser</h3>
-<p>Custom browsing with system-level integration and file handling.</p>
+<h3>🌐 Browser</h3>
+<p>Integrated browsing with system-level interaction.</p>
 </div>
 
 <div class="card">
 <h3>📦 Marketplace</h3>
-<p>Install and manage nodes, tools, and extensions.</p>
+<p>Expand functionality through nodes and extensions.</p>
 </div>
 
 <div class="card">
-<h3>⚙️ System Dashboard</h3>
-<p>Monitor, control, and automate your environment in real time.</p>
+<h3>⚙️ Dashboard</h3>
+<p>Real-time system control and monitoring.</p>
 </div>
 </div>
 </section>
 
 <!-- ARCHITECTURE -->
-<section class="section" id="architecture">
+<section class="section alt" id="architecture">
 <h2>Architecture</h2>
 
 <div class="grid">
 <div class="card">
 <h3>🧠 CORE</h3>
-<p>Command routing, execution logic, AI coordination.</p>
+<p>Execution, logic, and intelligence.</p>
 </div>
 
 <div class="card">
 <h3>🔗 NODE</h3>
-<p>Modular, expandable system of tools and features.</p>
+<p>Modular expansion and system growth.</p>
 </div>
 
 <div class="card">
 <h3>⚙️ SCALE</h3>
-<p>Automation, workflows, and intelligent execution.</p>
+<p>Automation and workflow orchestration.</p>
 </div>
 </div>
 </section>
@@ -156,81 +225,121 @@
 <div class="grid">
 <div class="card">
 <h3>Local First</h3>
-<p>Powered by Ollama — fully local AI execution.</p>
+<p>Powered by Ollama for local execution.</p>
 </div>
 
 <div class="card">
 <h3>Model Switching</h3>
-<p>Swap models dynamically based on task.</p>
+<p>Adapt models depending on task.</p>
 </div>
 
 <div class="card">
 <h3>Action-Based AI</h3>
-<p>AI executes actions, not just responses.</p>
+<p>AI performs actions, not just responses.</p>
 </div>
+</div>
+</section>
+
+<section class="section alt">
+<h2>What You Can Do</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Build</h3>
+<p>Create tools, workflows, and systems inside one environment.</p>
+</div>
+
+<div class="card">
+<h3>Automate</h3>
+<p>Reduce repetitive tasks through intelligent execution.</p>
+</div>
+
+<div class="card">
+<h3>Control</h3>
+<p>Centralize everything you do into one unified interface.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Status</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Active Development</h3>
+<p>Synapse Core is evolving rapidly with new features and improvements.</p>
+</div>
+
+<div class="card">
+<h3>Local First</h3>
+<p>Designed to run independently without reliance on external APIs.</p>
+</div>
+
+<div class="card">
+<h3>Expanding Ecosystem</h3>
+<p>Marketplace and modular system continuously growing.</p>
+</div>
+
 </div>
 </section>
 
 <!-- ROADMAP -->
-<section class="section" id="roadmap">
+<section class="section alt" id="roadmap">
 <h2>Roadmap</h2>
 
 <div class="timeline">
 
-<div class="step">
-<span>Aura</span>
-<p>Core system foundation, UI base, AI integration.</p>
+<div class="step" onclick="openRoadmap('aura')">
+  <span>Aura</span>
+  <p>Core system foundation and UI.</p>
 </div>
 
-<div class="step">
-<span>Pulse</span>
-<p>Expanded node system, workflow automation.</p>
+<div class="step" onclick="openRoadmap('pulse')">
+  <span>Pulse</span>
+  <p>Expanded nodes and automation.</p>
 </div>
 
-<div class="step">
-<span>Halo</span>
-<p>Advanced UI interfaces, plugin marketplace.</p>
+<div class="step" onclick="openRoadmap('halo')">
+  <span>Halo</span>
+  <p>Advanced interfaces and marketplace.</p>
 </div>
 
-<div class="step">
-<span>Nova</span>
-<p>Deep AI integration, system intelligence layer.</p>
+<div class="step" onclick="openRoadmap('nova')">
+  <span>Nova</span>
+  <p>Deep AI integration.</p>
 </div>
 
-<div class="step">
-<span>Phantom</span>
-<p>Full automation pipelines and adaptive workflows.</p>
+<div class="step" onclick="openRoadmap('phantom')">
+  <span>Phantom</span>
+  <p>Full automation pipelines.</p>
 </div>
 
-<div class="step">
-<span>Eclipse</span>
-<p>Complete ecosystem and unified system control.</p>
+<div class="step" onclick="openRoadmap('eclipse')">
+  <span>Eclipse</span>
+  <p>Complete unified ecosystem.</p>
 </div>
 
 </div>
 </section>
 
-<!-- VISION -->
-<section class="section">
-<h2>Vision</h2>
-
-<div class="grid">
-<div class="card">
-<h3>Unified System</h3>
-<p>Everything controlled from one environment.</p>
-</div>
-
-<div class="card">
-<h3>Adaptive Intelligence</h3>
-<p>The system evolves based on usage.</p>
-</div>
-
-<div class="card">
-<h3>Human + Machine</h3>
-<p>Reducing friction between thought and execution.</p>
-</div>
-</div>
+<!-- FINAL STATEMENT -->
+<section class="section" style="text-align:center;">
+<h2>The Goal</h2>
+<p style="max-width:700px; margin:auto; opacity:0.7;">
+    To create a system that adapts to you — not the other way around.
+</p>
 </section>
+
+<audio id="ambientSound" loop>
+    <source src="assets/ambient.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="hoverSound">
+    <source src="assets/hover.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
